@@ -7,15 +7,15 @@
 }:
 buildHelixPlugin (finalAttrs: {
   pname = "context.hx";
-  version = "0-unstable-2026-08-15";
+  version = "0-unstable-2026-10-07";
   cogName = "context";
   updateVersion = "branch";
 
   src = fetchFromCodeberg {
     owner = "gwid";
     repo = finalAttrs.pname;
-    rev = "71a56d1565df7a24696edcd7cf2c4b37a520071a";
-    hash = "sha256-uCulYYv1YUgy/oFcuuRL++Za8kgVlD6bQO7DYFzi4AA=";
+    rev = "186a7f2062d45eba901f87e7151d0e4eece0603f";
+    hash = "sha256-7okPQ4u/XYTLBdZKpHLSIqpNCboyrf5SmDlCXZUc8vM=";
   };
 
   pluginDependencies = [
