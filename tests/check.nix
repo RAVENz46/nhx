@@ -53,11 +53,13 @@ let
         programs.nhx.plugins = with helixPlugins; [ scooter trail splash-hx];
       })
 
+      ({ pkgs, ... }: {
+        programs.nhx.enable = pkgs ? steelix;
+      })
+
       {
         _file = ./check.nix;
         programs.nhx = {
-          enable = true;
-
           settings = {
             theme = "catppuccin_mocha";
             editor.line-number = "relative";

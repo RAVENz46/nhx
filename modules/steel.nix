@@ -168,14 +168,18 @@ in
     };
   };
 
-  config = lib.mkIf (cfg.enable && steelCfg.enable) {
-    # short binding so configs can write plugins = with helixPlugins; [ ... ];
-    _module.args.helixPlugins = config.programs.nhx.availablePlugins;
+  config = lib.mkMerge [
+    {
+      # short binding so configs can write plugins = with helixPlugins; [ ... ];
+      _module.args.helixPlugins = helixPlugins;
+    }
 
-    home.file = cogLinks // nativeLinks;
+    (lib.mkIf (cfg.enable && steelCfg.enable) {
+      home.file = cogLinks // nativeLinks;
 
-    xdg.configFile = extraFileLinks // {
-      "helix/init.scm".text = initScm.render cfg;
-    };
-  };
+      xdg.configFile = extraFileLinks // {
+        "helix/init.scm".text = initScm.render cfg;
+      };
+    })
+  ];
 }
